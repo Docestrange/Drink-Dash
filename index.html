@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Dash</title>
+    <style> 
+      
+      body {
+        background-color: rgb(150, 150, 150);
+        text-align: center;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: rgb(245, 204, 69);
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: rgb(69, 160, 245);
+      }
+
+      div.game-script {
+        padding-top: 5px;
+      }
+
+
+
+    </style>
+
+  </head>
+  <body>
+
+    
+
+    <div header="header">
+      <a href="index.html">
+        <img src="drinkdashbanner2.png" alt="Drink Dash Banner" style="width:100%;height:150;padding-top:10;padding-bottom:50;";>
+      </a>
+    </div>
+
+    <ul>
+        <li><a class="active" href="index.html">Let's Play</a></li>
+        <li><a href="Description.html">Description</a></li>
+        <li><a href="How-To-Play.html">How To Play</a></li>
+        <li><a href="Safe-Practices.html">Safe Practices</a></li>
+        <li><a href="Statistics.html">Statistics</a></li>
+        <li><a href="Credits.html">Credits</a></li>
+      </ul>
+    
+    <div class="game-script">
+      <script src="p5.js"></script>
+      <script src="p5.sound.js"></script>
+      <script src="p5.collide2D.js"></script>
+      <script src="Player.js"></script>
+      <script src="Obstacle.js"></script>
+      <script src="Extra.js"></script>
+      <script src="Exit.js"></script>
+      <script src="minigameMenu.js"></script>
+      <script src="sketch.js"></script>
+    </div>
+    
+
+  </body>
+</html>
+
+<!-- Let's Play, Description, How to Play, Safe Practices, Statistics-->
