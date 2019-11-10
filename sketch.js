@@ -263,9 +263,7 @@ function restart()
   	obstacles= [];
   	inExit= false;
   	exit= new Exit();
-  	exitTimer = 0;
-  	audio.currentTime=0;
-  	audio.play();
+  	exitTimer = 0; 
   }
 //Creates the BAC Meter- made by Josh Mateer
 function bacMeter(x, y, bacWidth) 
@@ -475,18 +473,17 @@ function draw()
 				}
 				
 			}
-		//Show a peer pressure dialog
-		if(player.score%1000 <500 && player.score<8000)
-		{
-			showPP(Math.round(player.score/1000));
-		}
-		//Create the blur motion
-		blur += blurSpeed;
-		if (blur <= 50 || blur >= 170)
-		{
-			blurSpeed *= -1;
-		}
-	
+			//Show a peer pressure dialog
+			if(player.score%1000 <500 && player.score<8000)
+			{
+				showPP(Math.round(player.score/1000));
+			}
+			//Create the blur motion
+			blur += blurSpeed;
+			if (blur <= 50 || blur >= 170)
+			{
+				blurSpeed *= -1;
+			}
 	  	}
 	  	else
 	  	{
@@ -498,8 +495,7 @@ function draw()
 		  	textAlign(CENTER,CENTER);	
 		  	text("PAUSED",width/2,height/2);
 		  	textSize(15);
-		  	audio.pause();
-	  	}  
+	  	}
 	}
 	//Ask if the player wants to play Cup Pong
 	if (currentMenu === "minigameintro")
