@@ -4,7 +4,9 @@ let player;
 let notPaused=true;
 let background;
 let playerMImg;
+let playerMImg2;
 let playerFImg;
+let playerFImg2;
 let jumpMImg;
 let jumpFImg;
 let duckMImg;
@@ -44,6 +46,8 @@ let winImg;
 let triggerOnce=true;
 let floorX1 = 0;
 let soundCount = 0;
+let audio;
+let ppMessages1;
 //Functions
 function setup() 
 {
@@ -60,6 +64,16 @@ function setup()
 		"You never do anything with us!",
 		"Don't be a baby!",
 		"CHUG, CHUG, CHUG!"];
+	ppMessages1= ["Hey, baby. I got you a drink.",
+                              "Aw, don't be shy!",
+                              "Let's have some fun, babe!",
+                              "Down another, it can't hurt ya!",
+                              "Wow, they were right. You're lame.",
+                              "Won't be having any fun with you.",
+                              "HAHA! MORE! GIVE HER MORE!",
+                              "Wanna sleep it off in my room?"];
+	audio = new Audio("backupaudio.wav");
+	audio.play();
 }
 function preload()
 {
@@ -67,8 +81,12 @@ function preload()
 	extraImgs.push(loadImage('https://i.ibb.co/nMd3jW8/people1.png'));
 	extraImgs.push(loadImage('https://i.ibb.co/ZhqtQbt/people2.png'));
 	extraImgs.push(loadImage('https://i.ibb.co/VtStBB7/table.png'));
+	extraImgs.push(loadImage('https://i.ibb.co/cXcp3qB/dj.png'));
+	extraImgs.push(loadImage('https://i.ibb.co/gy0DXw3/couch.png'));
+	extraImgs.push(loadImage('https://i.ibb.co/PWQxcFd/chairs.png'));
 	exitImg= loadImage('https://i.ibb.co/CW0TFcb/exit.png');
 	ppImg= loadImage('https://i.ibb.co/BnYNHc7/peerpressure.png');
+	ppImg1=loadImage('https://i.ibb.co/j6ybbVP/kylepp.png');
     intro1 = loadImage('https://i.ibb.co/X2cMGGj/how-to-play.png');
     intro2 = loadImage('https://i.ibb.co/F3gZS8d/slide3.png');
     intro3 = loadImage('https://i.ibb.co/88cP5s1/play.png');
@@ -89,6 +107,8 @@ function preload()
     endSlide2=loadImage('https://i.ibb.co/smSdHJ6/finalBAC.png');
     coverCup=loadImage('https://i.ibb.co/3dJXgPN/cupcover.png');
 	winImg=loadImage('https://i.ibb.co/WBtN6hT/youmadeit.png');
+	playerMImg2=loadImage('https://i.ibb.co/T4f10Yr/manrun2.png');
+	playerFImg2=loadImage('https://i.ibb.co/J7V2mKP/womanrun2.png');
 	images.push(loadImage('https://i.ibb.co/QDCjtJq/beer.png'));
 	images.push(loadImage('https://i.ibb.co/Gc14WjV/shot.png'));
 	images.push(loadImage('https://i.ibb.co/2NsmNRH/wine.png'));
@@ -117,7 +137,7 @@ function keyPressed()
 		{
 			if(player.BAC>0.2)
 			{
-				if(random(3)>1)
+				if(random(3)>0.5)
 					player.jump();
 			}
 			else
@@ -246,6 +266,8 @@ function restart()
   	inExit= false;
   	exit= new Exit();
   	exitTimer = 0;
+  	audio.currentTime=0;
+  	audio.play();
   }
 //Creates the BAC Meter- made by Josh Mateer
 function bacMeter(x, y, bacWidth) 
@@ -275,21 +297,30 @@ function bacMeter(x, y, bacWidth)
 //Show the peer pressure dialog
 function showPP(index)
 {
-	image(ppImg,0,0);
+	if(player.isMale)
+		image(ppImg,0,0);
+	else
+		image(ppImg1,0,0);
 	textSize(12);
 	strokeWeight(1);
 	fill(0);
 	textAlign(CENTER, CENTER);
-	text(ppMessages[index],100,30);
+	if(player.isMale)
+		text(ppMessages[index],100,30);
+	else
+		text(ppMessages1[index],110,40);
 }
 //Create the moving floor
 function scrollFloor(score)
 {
-	image(floorImg, floorX1, 0);
-	floorX1 -= (sqrt(score)/5);
-	if (floorX1 < -width)
+	if(notPaused)
 	{
-		floorX1 = 0;
+		image(floorImg, floorX1, 0);
+		floorX1 -= (sqrt(score)/5);
+		if (floorX1 < -width)
+		{
+			floorX1 = 0;
+		}
 	}
 }
 //Create the informational slides at beginning
@@ -407,7 +438,6 @@ function draw()
 	  	{
 	  		currentMenu="danger";
 	   	}
-	  	var audio= new Audio("./round1.wav");
 	  	if(notPaused)
 	  	{
 		  	n++;
@@ -419,30 +449,23 @@ function draw()
 			  		n=0;
 				}
 			}
-
 			if(player.BAC>0.3)
 			{
-				audio=new Audio("./round4.wav");
-				triggerOnce=false;
+				textSize(15);
+				fill(0);
+				text("BEWARE: Your vision has begun to blur!",width-75, height/2-75);
 			}
 			else if(player.BAC>0.2)
 			{
-				
-				audio=new Audio("./round3.wav");
-				triggerOnce=false;
+				textSize(15);
+				fill(0);
+				text("BEWARE: Your reaction time has begun to slow down!",width-75, height/2-75);
 			}
 			else if(player.BAC>0.1)
 			{
-				
-				audio=new Audio("./round2.wav");
-				triggerOnce=false;
+
 			}
 
-			if(soundCount==0)
-			{
-				audio.play();
-				soundCount++;
-			}
 			//Space out background sprites
 			xtraSpace++;
 			if(random(1)<0.05)

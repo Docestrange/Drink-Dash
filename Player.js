@@ -55,6 +55,8 @@ class Player
 				this.sprite=duckMImg;
 				this.y+=25;
 			}
+			else if(this.score%70>35)
+				this.sprite=playerMImg2;
 			else
 				this.sprite=playerMImg;
 		}
@@ -67,10 +69,12 @@ class Player
 				this.sprite=duckFImg;
 				this.y+=25;
 			}
+			else if(this.score%70>35)
+				this.sprite=playerFImg2;
 			else
 				this.sprite=playerFImg;
 		}
-		image(this.sprite,this.x,this.y);
+			image(this.sprite,this.x,this.y);
 
 		if(this.notPaused && !inExit)
 		{
