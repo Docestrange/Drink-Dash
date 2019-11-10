@@ -72,8 +72,6 @@ function setup()
                               "Won't be having any fun with you.",
                               "HAHA! MORE! GIVE HER MORE!",
                               "Wanna sleep it off in my room?"];
-	audio = new Audio("backupaudio.wav");
-	audio.play();
 }
 function preload()
 {
