@@ -100,10 +100,10 @@ class Player
 	{
 		if(this.isDucking)
 		{
-			return collideRectRect(this.x, this.y+25, this.r,this.r,obstacle.x,obstacle.y,obstacle.r,obstacle.r);
+			return this.collideRectRect(this.x, this.y+25, this.r,this.r,obstacle.x,obstacle.y,obstacle.r,obstacle.r);
 		}
 		else
-			return collideRectRect(this.x, this.y, this.r,this.r,obstacle.x,obstacle.y,obstacle.r,obstacle.r);
+			return this.collideRectRect(this.x, this.y, this.r,this.r,obstacle.x,obstacle.y,obstacle.r,obstacle.r);
 	}
 	restart()
 	{
@@ -122,6 +122,21 @@ class Player
 	    noStroke();
 	    triangle(x-size/2+(this.score/10000)*size, y+size/4-size/20+sq((this.score%40-20))/20-20, x-size/2+size/20+(this.score/10000)*size, y+size/4-size/8+sq((this.score%40-20))/20-20, x-size/2-size/20+(this.score/10000)*size, y+size/4-size/8+sq((this.score%40-20))/20-20);
 	}
+/*
+	This method to detect collision comes from the p5.collide2d.js file.
+*/
+collideRectRect (x, y, w, h, x2, y2, w2, h2)
+ {
+  //2d
+  //add in a thing to detect rectMode CENTER
+  if (x + w >= x2 &&    // r1 right edge past r2 left
+      x <= x2 + w2 &&    // r1 left edge past r2 right
+      y + h >= y2 &&    // r1 top edge past r2 bottom
+      y <= y2 + h2) {    // r1 bottom edge past r2 top
+        return true;
+  }
+  return false;
+}
 
 
 
