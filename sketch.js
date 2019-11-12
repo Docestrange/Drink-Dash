@@ -309,7 +309,7 @@ function showPP(index)
 //Create the moving floor
 function scrollFloor(score)
 {
-	if(notPaused)
+	if(notPaused && !inExit)
 	{
 		image(floorImg, floorX1, 0);
 		floorX1 -= (sqrt(score)/5);
