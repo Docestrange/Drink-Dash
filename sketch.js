@@ -174,7 +174,7 @@ function mouseClicked()
 {
    if (currentMenu == "main" || currentMenu==="danger" || currentMenu==="exit") 
    {
-   	if (slide < 4)
+   	if (slide < 4 && mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height)
    	{
    		slide ++;
    	}
