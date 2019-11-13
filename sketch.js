@@ -121,7 +121,7 @@ function preload()
 	images.push(loadImage('https://i.ibb.co/pd33sbv/water.png'));
 	images.push(loadImage('https://i.ibb.co/BGzvfsn/pizza.png'));
 	images.push(loadImage('https://i.ibb.co/n097XhM/clock.png'));
-	audio = new Audio("backupaudio.wav");
+	audio = new Audio("backupaudio.mp3");
 	/*
 	ppFemaleAudio.push(new Audio("vagelli0.wav"));
 	ppFemaleAudio.push(new Audio("vagelli1.wav"));
