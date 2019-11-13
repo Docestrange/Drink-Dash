@@ -122,7 +122,6 @@ function preload()
 	images.push(loadImage('https://i.ibb.co/BGzvfsn/pizza.png'));
 	images.push(loadImage('https://i.ibb.co/n097XhM/clock.png'));
 	audio = new Audio("backupaudio.mp3");
-	/*
 	ppFemaleAudio.push(new Audio("vagelli0.wav"));
 	ppFemaleAudio.push(new Audio("vagelli1.wav"));
 	ppFemaleAudio.push(new Audio("vagelli2.wav"));
@@ -139,7 +138,6 @@ function preload()
 	ppMaleAudio.push(new Audio("meg5.wav"));
 	ppMaleAudio.push(new Audio("meg6.wav"));
 	ppMaleAudio.push(new Audio("meg7.wav"));
-	*/
 
 
 
@@ -375,17 +373,15 @@ function showPP(index)
 
 	if(player.isMale)
 	{
-		ppAudio = new Audio("meg"+index+".wav")
 		text(ppMessages[index],100,30);
 		if(player.score==index*1000+1)
-			ppAudio.play();
+			ppMaleAudio[index].play();
 	}
 	else
 	{
-		ppAudio = new Audio("vagelli"+index+".wav")
 		text(ppMessages1[index],110,40);
 		if(player.score==index*1000+1)
-			ppAudio.play();
+			ppFemaleAudio[index].play();
 	}
 }
 //Create the moving floor
