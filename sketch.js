@@ -374,7 +374,7 @@ function showPP(index)
 	if(player.isMale)
 	{
 		text(ppMessages[index],100,30);
-		if(player.score==index*1000+1)
+		if(player.score==index*1000+2)
 		{
 			ppMaleAudio[index].play();
 			console.log("yo");
@@ -385,7 +385,7 @@ function showPP(index)
 	else
 	{
 		text(ppMessages1[index],110,40);
-		if(player.score==index*1000+1)
+		if(player.score==index*1000+2)
 			ppFemaleAudio[index].play();
 	}
 }
