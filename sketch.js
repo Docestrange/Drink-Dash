@@ -48,6 +48,10 @@ let floorX1 = 0;
 let soundCount = 0;
 let audio;
 let ppMessages1;
+let muted;
+let ppFemaleAudio;
+let ppMaleAudio;
+let ppAudio;
 //Functions
 function setup() 
 {
@@ -68,10 +72,12 @@ function setup()
                               "Aw, don't be shy!",
                               "Let's have some fun, babe!",
                               "Down another, it can't hurt ya!",
-                              "Wow, they were right. You're lame.",
+                              "Why won't you take \nanother shot with me?",
                               "Won't be having any fun with you.",
-                              "HAHA! MORE! GIVE HER MORE!",
+                              "Come on, dance with me.",
                               "Wanna sleep it off in my room?"];
+
+
 }
 function preload()
 {
@@ -115,6 +121,27 @@ function preload()
 	images.push(loadImage('https://i.ibb.co/pd33sbv/water.png'));
 	images.push(loadImage('https://i.ibb.co/BGzvfsn/pizza.png'));
 	images.push(loadImage('https://i.ibb.co/n097XhM/clock.png'));
+	audio = new Audio("backupaudio.wav");
+	ppFemaleAudio.push(new Audio("vagelli0.wav"));
+	ppFemaleAudio.push(new Audio("vagelli1.wav"));
+	ppFemaleAudio.push(new Audio("vagelli2.wav"));
+	ppFemaleAudio.push(new Audio("vagelli3.wav"));
+	ppFemaleAudio.push(new Audio("vagelli4.wav"));
+	ppFemaleAudio.push(new Audio("vagelli5.wav"));
+	ppFemaleAudio.push(new Audio("vagelli6.wav"));
+	ppFemaleAudio.push(new Audio("vagelli7.wav"));
+	ppMaleAudio.push(new Audio("meg0.wav"));
+	ppMaleAudio.push(new Audio("meg1.wav"));
+	ppMaleAudio.push(new Audio("meg2.wav"));
+	ppMaleAudio.push(new Audio("meg3.wav"));
+	ppMaleAudio.push(new Audio("meg4.wav"));
+	ppMaleAudio.push(new Audio("meg5.wav"));
+	ppMaleAudio.push(new Audio("meg6.wav"));
+	ppMaleAudio.push(new Audio("meg7.wav"));
+
+
+
+
 	/*
 		0= beer
 		1=shot
@@ -146,12 +173,52 @@ function keyPressed()
 		}
 		else if(key=='p' || key == 'P')
 		{
-			for(let o of obstacles)
+			if(!audio.paused && notPaused)
 			{
-				o.pause();
+				for(let o of obstacles)
+				{
+					o.pause();
+				}
+				player.pause();		
+				notPaused=!notPaused;
+				audio.pause();
 			}
-			player.pause();		
-			notPaused=!notPaused;
+			else if(audio.paused && notPaused)
+			{
+				for(let o of obstacles)
+				{
+					o.pause();
+				}
+				player.pause();		
+				notPaused=!notPaused;
+			}
+			else if(audio.paused && !notPaused)
+			{
+				for(let o of obstacles)
+				{
+					o.pause();
+				}
+				player.pause();		
+				notPaused=!notPaused;
+				audio.play();
+			}
+			else
+			{
+				for(let o of obstacles)
+				{
+					o.pause();
+				}
+				player.pause();		
+				notPaused=!notPaused;
+				audio.play();
+			}
+		}
+		else if(key=='M' || key == 'm')
+		{
+			if(audio.paused)
+				audio.play();
+			else
+				audio.pause();
 		}
 		else if(key=='r' || key == 'R')
 		{
@@ -160,6 +227,7 @@ function keyPressed()
 		player.isDucking= keyCode === DOWN_ARROW;
 	}
 }
+
 function keyReleased()
 {
 	keys[keyCode] = false;
@@ -185,6 +253,7 @@ function mouseClicked()
     		player.isMale = true;
     		slide = 0;
     		currentMenu = "play";
+    		audio.play();
     	}
     	if (mouseX > 540 && mouseX < 620 && mouseY > 200 && mouseY < 350)
     	{
@@ -192,6 +261,7 @@ function mouseClicked()
     		slide = 0;
     		currentMenu = "play";
     		restart();
+    		audio.play();
     	}
     }
    }
@@ -302,9 +372,15 @@ function showPP(index)
 	fill(0);
 	textAlign(CENTER, CENTER);
 	if(player.isMale)
+	{
 		text(ppMessages[index],100,30);
+		ppMaleAudio[index].play();
+	}
 	else
+	{
 		text(ppMessages1[index],110,40);
+		ppFemaleAudio[index].play();
+	}
 }
 //Create the moving floor
 function scrollFloor(score)
