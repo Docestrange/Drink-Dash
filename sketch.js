@@ -377,13 +377,15 @@ function showPP(index)
 	{
 		ppAudio = new Audio("meg"+index+".wav")
 		text(ppMessages[index],100,30);
-		ppAudio.play();
+		if(player.score==index*1000+1)
+			ppAudio.play();
 	}
 	else
 	{
 		ppAudio = new Audio("vagelli"+index+".wav")
 		text(ppMessages1[index],110,40);
-		ppAudio.play();
+		if(player.score==index*1000+1)
+			ppAudio.play();
 	}
 }
 //Create the moving floor
