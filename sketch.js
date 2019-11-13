@@ -49,8 +49,8 @@ let soundCount = 0;
 let audio;
 let ppMessages1;
 let muted;
-let ppFemaleAudio;
-let ppMaleAudio;
+let ppFemaleAudio= [];
+let ppMaleAudio= [];
 let ppAudio;
 //Functions
 function setup() 
@@ -122,6 +122,7 @@ function preload()
 	images.push(loadImage('https://i.ibb.co/BGzvfsn/pizza.png'));
 	images.push(loadImage('https://i.ibb.co/n097XhM/clock.png'));
 	audio = new Audio("backupaudio.wav");
+	/*
 	ppFemaleAudio.push(new Audio("vagelli0.wav"));
 	ppFemaleAudio.push(new Audio("vagelli1.wav"));
 	ppFemaleAudio.push(new Audio("vagelli2.wav"));
@@ -138,7 +139,7 @@ function preload()
 	ppMaleAudio.push(new Audio("meg5.wav"));
 	ppMaleAudio.push(new Audio("meg6.wav"));
 	ppMaleAudio.push(new Audio("meg7.wav"));
-
+	*/
 
 
 
@@ -371,15 +372,18 @@ function showPP(index)
 	strokeWeight(1);
 	fill(0);
 	textAlign(CENTER, CENTER);
+
 	if(player.isMale)
 	{
+		ppAudio = new Audio("meg"+index+".wav")
 		text(ppMessages[index],100,30);
-		ppMaleAudio[index].play();
+		ppAudio.play();
 	}
 	else
 	{
+		ppAudio = new Audio("vagelli"+index+".wav")
 		text(ppMessages1[index],110,40);
-		ppFemaleAudio[index].play();
+		ppAudio.play();
 	}
 }
 //Create the moving floor
