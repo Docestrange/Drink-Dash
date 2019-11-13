@@ -375,7 +375,12 @@ function showPP(index)
 	{
 		text(ppMessages[index],100,30);
 		if(player.score==index*1000+1)
+		{
 			ppMaleAudio[index].play();
+			console.log("yo");
+		}
+
+			
 	}
 	else
 	{
