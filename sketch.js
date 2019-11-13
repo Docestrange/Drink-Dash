@@ -244,8 +244,9 @@ function mouseClicked()
    	if (slide < 4 && mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height)
    	{
    		slide ++;
+   		keyPressTimer = 0;
    	}
-    if (slide === 4)
+    if (slide === 4 && keyPressTimer > 5)
     {
     	if (mouseX > 380 && mouseX < 465 && mouseY > 200 && mouseY < 350)
     	{
@@ -420,6 +421,7 @@ function introSlides()
         image(intro3,0,0)
    } else
    {
+   		keyPressTimer++;
    		image(genderImg,0,0);
    }
 }
