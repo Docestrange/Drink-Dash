@@ -644,6 +644,7 @@ function draw()
 	//Win screen
 	if(currentMenu=== "exit")
 	{
+		audio.pause();
 		if(slide===0)
 		{
 			image(winImg,0,0);
