@@ -612,7 +612,7 @@ function draw()
 	//Game over screen
 	if(currentMenu === "danger")
 	{
-		
+		audio.pause();
 		if(slide===0)
 		{
 			image(dangerImg,0,0);
@@ -638,6 +638,7 @@ function draw()
 		else
 		{
 			currentMenu="main";
+			audio.load();
 			restart();
 		}
 	}
