@@ -91,7 +91,7 @@ function preload()
 	exitImg= loadImage('https://i.ibb.co/CW0TFcb/exit.png');
 	ppImg= loadImage('https://i.ibb.co/BnYNHc7/peerpressure.png');
 	ppImg1=loadImage('https://i.ibb.co/j6ybbVP/kylepp.png');
-    intro1 = loadImage('https://i.bb.co/X2cMGGj/how-to-play.png');
+    intro1 = loadImage('how to play.png');
     intro2 = loadImage('https://i.ibb.co/F3gZS8d/slide3.png');
     intro3 = loadImage('https://i.ibb.co/88cP5s1/play.png');
     genderImg = loadImage('https://i.ibb.co/D1mGkM5/gender.png');
