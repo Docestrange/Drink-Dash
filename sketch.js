@@ -613,6 +613,7 @@ function draw()
 	if(currentMenu === "danger")
 	{
 		audio.pause();
+		audio.currentTime = 0;
 		if(slide===0)
 		{
 			image(dangerImg,0,0);
