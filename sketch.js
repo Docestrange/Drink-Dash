@@ -638,7 +638,6 @@ function draw()
 		else
 		{
 			currentMenu="main";
-			audio.load();
 			restart();
 		}
 	}
